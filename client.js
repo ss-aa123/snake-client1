@@ -17,13 +17,11 @@ const connect = function () {
   });  
 
   conn.on("data", (data) => {
-    console.log("Name: SAM", data);
+    console.log(data);
   });
 
   return conn;
 };
 
 
-module.exports = {
-  connect
-};
+module.exports = {connect};
