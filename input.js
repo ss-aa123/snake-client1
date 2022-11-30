@@ -1,3 +1,5 @@
+const { messages, moves } = require("./constants");
+
 const { connect } = require("http2");
 const { createConnection } = require("net");
 
@@ -27,26 +29,15 @@ const handleUserInput = function (key) {
   if (key === '\u0003') {
     process.exit();
   }
-  //HOW TO GET THESE TO WORKKKKKKK
-  if (key === 'w') {
-    connection.write("Move: up");
-  }
-  if (key === 'a') {
-    connection.write("Move: left");
-  }
-  if (key === 's') {
-    connection.write("Move: down");
-  }
-  if (key === 'd') {
-    connection.write("Move: right");
-  }
-
-  if (key === 'q') {
-    connection.write("Say: Thanks for playing!")
-  }
-  if (key === 'z') {
-    connection.write("Say: Good Job!")
-  }
+if (moves[key]) {
+  connection.write(moves[key]);
+}
+if (messages[key]) {
+  connection.write(messages[key]);
+}
+  
 };
 
-module.exports = {setupInput};
+module.exports = {
+  setupInput
+};
